@@ -1,4 +1,4 @@
-import {SignUpController} from './signup'
+import {SignUpController} from './signup';
 
 describe('Signup Controller', () => {
   test('Should return 400 if no name is provided', () => {
@@ -21,7 +21,7 @@ describe('Signup Controller', () => {
       body: {
         name: 'any_name',
         password: 'any_passowrd',
-        passwordConfirmation: 'any_passowrd'
+        passwordConfirmation: 'any_passowrd',
       }
     }
     const httpResponse = sut.handle(httpRequest);
