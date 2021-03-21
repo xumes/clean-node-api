@@ -28,4 +28,11 @@ test('Should call Bcrypt with correct values', async () => {
     const hash = await sut.encrypt('valid_password')
     expect(hash).toBe('hashed_password')
   })
+
+  test('Should throw if bcrypt throws', async () => {
+    const sut = makeSut()
+    jest.spyOn(bcrypt, 'hash').mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))
+    const promise = sut.encrypt('valid_password')
+    await expect(promise).rejects.toThrow()
+  })
 })
